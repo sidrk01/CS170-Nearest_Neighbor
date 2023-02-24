@@ -9,7 +9,7 @@ int main() {
 
     Node n;
     for (unsigned i = 0; i < 5; i++) {
-        printf("%.3g", n.accuracy(&n));
+        printf("%.3g", n.accuracy());
         cout << " ";
     }
     /*
