@@ -7,12 +7,13 @@ int main() {
     int features_num = 0;
     int user_choice = 0;
 
-    Node n;
-    for (unsigned i = 0; i < 5; i++) {
-        printf("%.3g", n.accuracy());
-        cout << " ";
-    }
-    /*
+//    Node n;
+//    for (unsigned i = 0; i < 5; i++) {
+//        printf("%.3g", n.accuracy());
+//        cout << " ";
+//    }
+
+
     while (user_opt == 'Y' || user_opt == 'y') {
         cout << welcome; //Welcome prompt
         cout << algo_choice; //choices for algorithm
@@ -22,10 +23,21 @@ int main() {
         cout << options;
         cin >> user_choice;
 
+        //create searchalgos object
+        vector<vector<double>> user_vct;
+        vector<double> v =  {30.0};
+        for (unsigned i = 0; i < features_num + 1; i++){
+            user_vct.push_back(v);
+        }
+
+        SearchAlgos searchAlgos(user_vct);
+
         if (user_choice == 1) {
             //Forward Selection
+            searchAlgos.forward_selection();
         } else if (user_choice == 2) {
             //Backward Selection
+            searchAlgos.backward_selection();
         } else {
             //Sid's Special Algorithm
         }
@@ -35,7 +47,6 @@ int main() {
         cout << proceed;
         cin >> user_opt;
     }
-*/
-        return 0;
+
     return 0;
 }
