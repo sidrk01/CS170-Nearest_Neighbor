@@ -28,6 +28,8 @@ void SearchAlgos::backward_selection() {
     cout << setprecision(4)<< ac << "%\n\n";
     cout << "Beginning search.\n\n";
 
+    data_temp.push_back(data_set.at(0)); //add first set of values
+
     vector<int> best_features(data_set.size() - 1); //includes all possible features
     for (unsigned i = 0; i < best_features.size(); i++){
         best_features[i] = i +1; //adding all features to be tracked
