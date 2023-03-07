@@ -20,7 +20,7 @@ private:
     vector<double> feature_set;
 public:
     SearchAlgos(vector<vector<double>> user);
-    double accuracy (vector<vector<double>> data_set);
+    double accuracy (vector<int> data_set);
     void forward_selection();
 
     void backward_selection();

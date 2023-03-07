@@ -1,21 +1,20 @@
 #include <iostream>
-#include "header/uifunctions.h"
-#include "header/SearchAlgos.h"
+#include "../header/uifunctions.h"
+#include "../header/SearchAlgos.h"
+
+vector<vector<double>> user_vct; //global variable to store data entries
 
 int main() {
     char user_opt = 'Y';
     int features_num = 0;
     int user_choice = 0;
 
-//    Node n;
-//    for (unsigned i = 0; i < 5; i++) {
-//        printf("%.3g", n.accuracy());
-//        cout << " ";
-//    }
-
 
     while (user_opt == 'Y' || user_opt == 'y') {
-        cout << welcome; //Welcome prompt
+        cout << welcome << endl; //Welcome prompt
+
+        data_entry();
+
         cout << algo_choice; //choices for algorithm
         cin >> features_num;
         cout << border;
@@ -24,7 +23,7 @@ int main() {
         cin >> user_choice;
 
         //create searchalgos object
-        vector<vector<double>> user_vct;
+
         vector<double> v =  {30.0};
         for (unsigned i = 0; i < features_num + 1; i++){
             user_vct.push_back(v);

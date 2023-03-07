@@ -23,8 +23,8 @@ void SearchAlgos::backward_selection() {
     int removed_feature;
 
     //prexisting accuracy without features
-    cout << "Using no features and 'random' evaluation, I get an accuracy of ";
-    ac = accuracy(data_temp);
+    cout << "Using all features and 'random' evaluation, I get an accuracy of ";
+    ac = accuracy(current_features);
     cout << setprecision(4)<< ac << "%\n\n";
     cout << "Beginning search.\n\n";
 
@@ -59,7 +59,7 @@ void SearchAlgos::backward_selection() {
                 }
                 cout << "}";
                 //provided accuracy
-                ac = accuracy(data_temp);
+                ac = accuracy(current_features);
                 cout << " accuracy is " << setprecision(4) << ac << "%\n";
 
                 if (local_max <= ac) { //replaces local accuracy with current best one
@@ -113,7 +113,7 @@ void SearchAlgos::forward_selection() {
 
     //prexisting accuracy without features
     cout << "Using no features and 'random' evaluation, I get an accuracy of ";
-    ac = accuracy(data_temp);
+    ac = accuracy(current_features);
     cout << setprecision(4)<< ac << "%\n\n";
     cout << "Beginning search.\n\n";
 
@@ -142,7 +142,7 @@ void SearchAlgos::forward_selection() {
                     cout << current_features.at(l) << ",";
                 }
                 cout << "}";
-                ac = accuracy(data_temp); //measures accuracy for given feature set
+                ac = accuracy(current_features); //measures accuracy for given feature set
                 cout << " accuracy is " << setprecision(4 ) << ac << "%\n";
 
                 if (ac > local_max){
@@ -182,7 +182,7 @@ void SearchAlgos::forward_selection() {
     cout << "} which has an accuracy of " << setprecision(4) << max << "%" << endl; //best accuracy for possible features
 }
 
-double SearchAlgos::accuracy(vector<vector<double>> data_set) {
+double SearchAlgos::accuracy(vector<int> data_set) {
     double num1 = (rand() % 100);
     double num2 = (float) rand()/RAND_MAX;
     return (double) num1 + num2;
