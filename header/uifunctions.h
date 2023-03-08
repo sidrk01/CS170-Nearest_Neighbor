@@ -23,30 +23,39 @@ const string border = "=========================================================
 void data_entry(){
     string current_line;
     string user_file;
+    string add_line;
     bool flag = false; //flag raised for working .txt file
     int current_itr = 0;
     vector<vector<double>> data_num;
     vector<double> temp;
+    stringstream string_file(current_line);
 
     while (!flag){
         cout << file_name;
         cin >> user_file;
 
-        ifstream file("small.txt");
+        ifstream file(user_file);
         if(!file.is_open()){
             cout << invalid_file << user_file << endl;
         } else {
             flag = true; //causes loop to exit
+            getline(file, current_line);
+
+            while(string_file >> current_line) { //reads data from column val into string
+                temp.push_back(stod(current_line)); //parse the string into double
+                data_num.push_back(temp);
+                temp.clear();
+            }
+
+            while (getline(file, current_line)) {
+                stringstream file_i(current_line);
+                for (auto & i : data_num) {
+                    if (file_i >> add_line)
+                        i.push_back(stod(add_line));
+                }
+            }
         }
     }
-//        while(file >> current_line){ //reads data from column val into string
-//            temp.push_back(stod(current_line)); //parse the string into double
-//            data_num.push_back(temp);
-//            for (unsigned i = 0; i < temp.size(); i++){
-//                cout << "Double value " << i << ":" << data_num.at(current_itr).at(i);
-//            }
-//        }
-
 }
 
 #endif //UNTITLED_UIFUNCTIONS_H

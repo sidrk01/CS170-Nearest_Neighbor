@@ -11,7 +11,7 @@ int main() {
 
 
     while (user_opt == 'Y' || user_opt == 'y') {
-        cout << welcome << endl; //Welcome prompt
+        cout << welcome << border; //Welcome prompt
 
         data_entry();
 
