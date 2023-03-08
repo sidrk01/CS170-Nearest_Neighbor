@@ -20,15 +20,14 @@ const string default_eval = "Using no features and 'random' evaluation, I get an
 const string proceed = "Would you like to try another algorithm?\nEnter 'Y' to continue or 'N' to quit.\n";
 const string border = "========================================================================================================================";
 
-void data_entry(){
+//responsible for reading each column value and subsequent row and storing in 2D vector
+vector<vector<double>> data_entry(){
     string current_line;
     string user_file;
     string add_line;
     bool flag = false; //flag raised for working .txt file
-    int current_itr = 0;
     vector<vector<double>> data_num;
     vector<double> temp;
-    stringstream string_file(current_line);
 
     while (!flag){
         cout << file_name;
@@ -40,6 +39,7 @@ void data_entry(){
         } else {
             flag = true; //causes loop to exit
             getline(file, current_line);
+            stringstream string_file(current_line);
 
             while(string_file >> current_line) { //reads data from column val into string
                 temp.push_back(stod(current_line)); //parse the string into double
@@ -56,6 +56,8 @@ void data_entry(){
             }
         }
     }
+
+    return data_num;
 }
 
 #endif //UNTITLED_UIFUNCTIONS_H

@@ -13,22 +13,25 @@ int main() {
     while (user_opt == 'Y' || user_opt == 'y') {
         cout << welcome << border; //Welcome prompt
 
-        data_entry();
+        user_vct = data_entry();
 
-        cout << algo_choice; //choices for algorithm
-        cin >> features_num;
+//        TEST: Make sure column and row of 2D vector are swapped correctly
+//        for (auto & i : user_vct){
+//            for (double j : i){
+//                cout << j << " ";
+//            }
+//            cout << endl;
+//        }
+
+//        cout << algo_choice; //choices for algorithm
+//        cin >> features_num;
+
         cout << border;
 
         cout << options;
         cin >> user_choice;
 
         //create searchalgos object
-
-        vector<double> v =  {30.0};
-        for (unsigned i = 0; i < features_num + 1; i++){
-            user_vct.push_back(v);
-        }
-
         SearchAlgos searchAlgos(user_vct);
 
         if (user_choice == 1) {
