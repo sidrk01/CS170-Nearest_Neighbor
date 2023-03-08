@@ -11,6 +11,8 @@
 #include <algorithm>
 #include <iomanip>
 #include <vector>
+#include <cfloat>
+#include <cmath>
 
 using namespace std;
 
@@ -18,11 +20,11 @@ class SearchAlgos {
 private:
     vector<vector<double>> data_set;
     vector<double> feature_set;
+    static double nearest_neighbor(vector<double>, vector<vector<double>>);
 public:
-    SearchAlgos(vector<vector<double>> user);
-    double accuracy (vector<int> data_set);
+    explicit SearchAlgos(vector<vector<double>> user);
+    static double accuracy(vector<vector<double>> set_data);
     void forward_selection();
-
     void backward_selection();
 
 };

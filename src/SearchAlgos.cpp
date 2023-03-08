@@ -6,8 +6,8 @@
 
 
 SearchAlgos::SearchAlgos(vector<vector<double>> user) {
-    for (unsigned i = 0; i < user.size(); i++){
-        data_set.push_back(user.at(i));
+    for (const auto & i : user){
+        data_set.push_back(i);
     }
 }
 
@@ -22,11 +22,11 @@ void SearchAlgos::backward_selection() {
     double local_max;
     int removed_feature;
 
-    //prexisting accuracy without features
-    cout << "Using all features and 'random' evaluation, I get an accuracy of ";
-    ac = accuracy(current_features);
-    cout << setprecision(4)<< ac << "%\n\n";
-    cout << "Beginning search.\n\n";
+////prexisting accuracy without features
+//    cout << "Using all features and 'random' evaluation, I get an accuracy of ";
+//    ac = accuracy(data_temp);
+//    cout << setprecision(4)<< ac << "%\n\n";
+//    cout << "Beginning search.\n\n";
 
     data_temp.push_back(data_set.at(0)); //add first set of values
 
@@ -41,8 +41,8 @@ void SearchAlgos::backward_selection() {
         for (unsigned j = 1; j < data_set.size(); j++){
             current_features = curr_best; //include all features to be tested
 
-            for (unsigned k = 0; k < current_features.size();k++){
-                data_temp.push_back(data_set.at(current_features.at(k))); //adds subsequent feature to temp_data from preselect features
+            for (int current_feature : current_features){
+                data_temp.push_back(data_set.at(current_feature)); //adds subsequent feature to temp_data from preselect features
             }
 
             if (find(current_features.begin(), current_features.end(), j) != current_features.end()){ //finds features to eliminate
@@ -59,7 +59,7 @@ void SearchAlgos::backward_selection() {
                 }
                 cout << "}";
                 //provided accuracy
-                ac = accuracy(current_features);
+                ac = accuracy(data_temp);
                 cout << " accuracy is " << setprecision(4) << ac << "%\n";
 
                 if (local_max <= ac) { //replaces local accuracy with current best one
@@ -111,41 +111,41 @@ void SearchAlgos::forward_selection() {
     double max;
     double local_max;
 
-    //prexisting accuracy without features
-    cout << "Using no features and 'random' evaluation, I get an accuracy of ";
-    ac = accuracy(current_features);
-    cout << setprecision(4)<< ac << "%\n\n";
-    cout << "Beginning search.\n\n";
+////   prexisting accuracy without features
+//    cout << "Using no features and 'random' evaluation, I get an accuracy of ";
+//    ac = accuracy(data_temp);
+//    cout << setprecision(4) << ac << "%\n\n";
+//    cout << "Beginning search.\n\n";
 
     data_temp.push_back(data_set.at(0)); //add first set of values
 
-    for(unsigned i = 1; i < data_set.size(); i++) { //"walks" down search tree
+    for (unsigned i = 1; i < data_set.size(); i++) { //"walks" down search tree
         local_max = 0.0;
         for (unsigned j = 1; j < data_set.size(); j++) { //considers first set of best features
             current_features = curr_best;
 
 
-            for (unsigned k = 0; k < current_features.size(); k++) { //adds the best set of features to temp data
-                data_temp.push_back(data_set.at(current_features.at(k)));
+            for (int current_feature : current_features) { //adds the best set of features to temp data
+                data_temp.push_back(data_set.at(current_feature));
             }
 
             //only consider adding this feature if it was not already added
-            if (find(current_features.begin(), current_features.end(), j) == current_features.end()){
+            if (find(current_features.begin(), current_features.end(), j) == current_features.end()) {
                 data_temp.push_back(data_set.at(j));
                 current_features.push_back(j);
                 cout << "Using feature(s) {"; //prints current Node
 
-                for (int l = 0; l < current_features.size(); l++){
+                for (int l = 0; l < current_features.size(); l++) {
                     if (l == current_features.size() - 1) //prints proper notation of feature set
                         cout << current_features.at(l);
                     else
-                    cout << current_features.at(l) << ",";
+                        cout << current_features.at(l) << ",";
                 }
                 cout << "}";
-                ac = accuracy(current_features); //measures accuracy for given feature set
-                cout << " accuracy is " << setprecision(4 ) << ac << "%\n";
+                ac = accuracy(data_temp); //measures accuracy for given feature set
+                cout << " accuracy is " << setprecision(4) << ac << "%\n";
 
-                if (ac > local_max){
+                if (ac > local_max) {
                     local_max = ac;
                     temp = current_features;
                 }
@@ -159,32 +159,82 @@ void SearchAlgos::forward_selection() {
             if (j == curr_best.size() - 1)
                 cout << curr_best.at(j);
             else
-            cout << curr_best.at(j) << ",";
+                cout << curr_best.at(j) << ",";
         }
         cout << "} was best, accuracy is " << setprecision(4) << local_max << "%\n\n";
 
-        if (local_max > max){
+        if (local_max > max) {
             best_features = curr_best;
             max = local_max;
-        } else if (local_max < max){
+        } else if (local_max < max) {
             cout << "(Warning, Accuracy has decreased!)\n"; //issues warning when local max is reduced
         }
         temp.clear();
     }
 
     cout << "Finished search!! The best feature subset is {";
-    for (unsigned j = 0; j < best_features.size(); j++){
+    for (unsigned j = 0; j < best_features.size(); j++) {
         if (j == best_features.size() - 1)
-        cout << best_features.at(j);
+            cout << best_features.at(j);
         else
-        cout << best_features.at(j) << ",";
+            cout << best_features.at(j) << ",";
     }
-    cout << "} which has an accuracy of " << setprecision(4) << max << "%" << endl; //best accuracy for possible features
+    cout << "} which has an accuracy of " << setprecision(4) << max << "%"
+         << endl; //best accuracy for possible features
 }
 
-double SearchAlgos::accuracy(vector<int> data_set) {
-    double num1 = (rand() % 100);
-    double num2 = (float) rand()/RAND_MAX;
-    return (double) num1 + num2;
+//Utilizes test object to report nearest neighbor
+double SearchAlgos::nearest_neighbor(vector<double> column, vector<vector<double>> num_data) {
+    double distance;
+    double test_obj;
+    double defined_class;
+    auto nearest_diff = DBL_MAX; //max possible distance to begin with
+
+    defined_class = column.at(0);
+    for (unsigned i = 0; i < num_data.at(0).size(); i++){
+        distance = 0.0;
+        for (unsigned j = 0; j < num_data.size(); j++){
+            if (j > 0){ //utilize k-fold
+                test_obj = num_data.at(j).at(i); //taking distance from test objects to each defined object
+                distance += pow((test_obj - column.at(j)),2);
+            }
+        }
+
+        if (nearest_diff >= distance){
+            nearest_diff = distance;
+            defined_class = static_cast<int>(num_data.at(0).at(i));
+        }
+    }
+    return defined_class;
+}
+
+//correct accuracy is now displayed
+double SearchAlgos::accuracy(vector<vector<double>> set_data) {
+//    double num1 = (rand() % 100);
+//    double num2 = (float) rand()/RAND_MAX;
+//    return (double) num1 + num2;
+    vector<vector<double>> data_num;
+    vector<double> column;
+    vector<double> temp;
+
+    int correct_class = 0;
+    double retrieve_neighbor = 0.0;
+
+    for (unsigned i = 0; i < set_data.at(0).size(); i++){
+        for (const auto & j : set_data){
+            temp = j; //assigned complete set of individual feature
+            column.push_back(temp.at(i));
+            temp.erase(temp.begin() + i); //leave-one-out
+            data_num.push_back(temp);
+        }
+
+        retrieve_neighbor = nearest_neighbor(column, data_num);
+        if (retrieve_neighbor == column.at(0)){   //correctly defined class
+            correct_class += 1;
+        }
+        data_num.clear();
+        column.clear();
+    }
+    return (correct_class / static_cast<double>(data_num[0].size())) * 100; //correctly classified / total instances
 }
 

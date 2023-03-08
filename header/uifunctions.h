@@ -61,5 +61,6 @@ vector<vector<double>> data_entry(){
     return data_num;
 }
 
+
 #endif //UNTITLED_UIFUNCTIONS_H
 

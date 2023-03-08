@@ -11,35 +11,6 @@ int main() {
     int features_num = 0;
     int user_choice = 0;
 
-//// TEST: Helper functions for mean and standard deviation
-//    double c = 0;
-//    vector<double> temp;
-//    for (unsigned i = 0; i < 3; i++){
-//        temp.push_back(c);
-//        c += 0.18;
-//    }
-//
-//    for (unsigned i = 0; i < 5; i++){
-//        user_vct.push_back(temp);
-//    }
-//
-//    for (auto & i : user_vct) {
-//        for (double j: i) {
-//            cout << j << " ";
-//        }
-//        cout << endl;
-//    }
-//        Normalize test(user_vct);
-//
-//   user_vct =  test.normalize_data();
-//cout << endl;
-//    for (auto & i : user_vct){
-//            for (double j : i){
-//                cout << j << " ";
-//            }
-//            cout << endl;
-//        }
-
     while (user_opt == 'Y' || user_opt == 'y') {
         cout << welcome << border; //Welcome prompt
 
