@@ -22,11 +22,11 @@ void SearchAlgos::backward_selection() {
     double local_max;
     int removed_feature;
 
-////prexisting accuracy without features
-//    cout << "Using all features and 'random' evaluation, I get an accuracy of ";
-//    ac = accuracy(data_temp);
-//    cout << setprecision(4)<< ac << "%\n\n";
-//    cout << "Beginning search.\n\n";
+////prexisting accuracy without features (default rate)
+    cout << "Using all features, I get an accuracy of ";
+    ac = accuracy(data_set);
+    cout << setprecision(4)<< ac << "%\n\n";
+    cout << "Beginning search.\n\n";
 
     data_temp.push_back(data_set.at(0)); //add first set of values
 
@@ -111,11 +111,11 @@ void SearchAlgos::forward_selection() {
     double max;
     double local_max;
 
-////   prexisting accuracy without features
-//    cout << "Using no features and 'random' evaluation, I get an accuracy of ";
-//    ac = accuracy(data_temp);
-//    cout << setprecision(4) << ac << "%\n\n";
-//    cout << "Beginning search.\n\n";
+////   prexisting accuracy without features (default rate)
+    cout << "Using no features, I get an accuracy of ";
+    ac = no_features_NN();
+    cout << setprecision(4) << ac << "%\n\n";
+    cout << "Beginning search.\n\n";
 
     data_temp.push_back(data_set.at(0)); //add first set of values
 
@@ -236,5 +236,22 @@ double SearchAlgos::accuracy(vector<vector<double>> set_data) {
         column.clear();
     }
     return (correct_class / static_cast<double>(data_num[0].size())) * 100; //correctly classified / total instances
+}
+
+double SearchAlgos::no_features_NN () {
+    double class_one = 0;
+    double class_two = 0;
+    vector<double> class_evaluate = data_set.at(0);
+
+    for (double i : class_evaluate){
+        if (i == 1)
+            class_one += 1;
+        else
+            class_two += 1;
+    }
+    if (class_one > class_two)
+        return  (class_one / static_cast<double>( class_evaluate.size())) * 100;
+    else
+        return (class_two / static_cast<double>( class_evaluate.size())) * 100;
 }
 

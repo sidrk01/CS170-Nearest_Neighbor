@@ -21,6 +21,7 @@ private:
     vector<vector<double>> data_set;
     vector<double> feature_set;
     static double nearest_neighbor(vector<double>, vector<vector<double>>);
+     double no_features_NN();
 public:
     explicit SearchAlgos(vector<vector<double>> user);
     static double accuracy(vector<vector<double>> set_data);
