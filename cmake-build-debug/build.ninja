@@ -61,6 +61,12 @@ build CMakeFiles/untitled.dir/src/SearchAlgos.cpp.obj: CXX_COMPILER__untitled_De
   OBJECT_DIR = CMakeFiles\untitled.dir
   OBJECT_FILE_DIR = CMakeFiles\untitled.dir\src
 
+build CMakeFiles/untitled.dir/src/Normalize.cpp.obj: CXX_COMPILER__untitled_Debug C$:/Users/sidha/CLionProjects/untitled/src/Normalize.cpp || cmake_object_order_depends_target_untitled
+  DEP_FILE = CMakeFiles\untitled.dir\src\Normalize.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\untitled.dir
+  OBJECT_FILE_DIR = CMakeFiles\untitled.dir\src
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target untitled
@@ -69,7 +75,7 @@ build CMakeFiles/untitled.dir/src/SearchAlgos.cpp.obj: CXX_COMPILER__untitled_De
 #############################################
 # Link the executable untitled.exe
 
-build untitled.exe: CXX_EXECUTABLE_LINKER__untitled_Debug CMakeFiles/untitled.dir/src/main.cpp.obj CMakeFiles/untitled.dir/src/SearchAlgos.cpp.obj
+build untitled.exe: CXX_EXECUTABLE_LINKER__untitled_Debug CMakeFiles/untitled.dir/src/main.cpp.obj CMakeFiles/untitled.dir/src/SearchAlgos.cpp.obj CMakeFiles/untitled.dir/src/Normalize.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\untitled.dir

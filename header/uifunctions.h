@@ -16,6 +16,7 @@ const string file_name = "Please include the filename you would like to test\n";
 const string invalid_file = "Sorry, the following file couldn't be located: ";
 const string algo_choice = "Please enter the total number of features:\n";
 const string options = "[1] Feature Selection\n[2] Backward Elimination\n[3] Sid's Special Algorithm.\n";
+const string normalize = "Would you like to normalize the continuous features?\nEnter 'Y' to confirm.\n";
 const string default_eval = "Using no features and 'random' evaluation, I get an accuracy of ";
 const string proceed = "Would you like to try another algorithm?\nEnter 'Y' to continue or 'N' to quit.\n";
 const string border = "========================================================================================================================";
