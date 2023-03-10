@@ -1,11 +1,11 @@
 # ninja log v5
-4	213	6999449136728289	build.ninja	17b7d20ab22cf07b
+4	213	7000056343335223	build.ninja	17b7d20ab22cf07b
 3	1129	6999309452970496	CMakeFiles/untitled.dir/main.cpp.obj	428cb9f11da464bf
-1187	1416	7000046391772709	untitled.exe	45d08a425b012b84
-4	1187	7000046389499921	CMakeFiles/untitled.dir/src/SearchAlgos.cpp.obj	f65df015b501623a
+1215	1447	7000047761173558	untitled.exe	45d08a425b012b84
+3	1214	7000047758876965	CMakeFiles/untitled.dir/src/SearchAlgos.cpp.obj	f65df015b501623a
 3	1266	7000045315858773	CMakeFiles/untitled.dir/src/main.cpp.obj	b4b158e905c3fb36
 3	795	6999610627433409	CMakeFiles/untitled.dir/src/Normalize.cpp.obj	3628cb79350f8aa6
-4	1193	7000047316393101	CMakeFiles/untitled.dir/src/SearchAlgos.cpp.obj	f65df015b501623a
-1193	1419	7000047318619336	untitled.exe	45d08a425b012b84
-3	1214	7000047758876965	CMakeFiles/untitled.dir/src/SearchAlgos.cpp.obj	f65df015b501623a
-1215	1447	7000047761173558	untitled.exe	45d08a425b012b84
+3	1207	7000058863139452	CMakeFiles/untitled.dir/src/SearchAlgos.cpp.obj	f65df015b501623a
+1207	1453	7000058865564721	untitled.exe	45d08a425b012b84
+4	1231	7000442978391959	CMakeFiles/untitled.dir/src/main.cpp.obj	b4b158e905c3fb36
+1231	1500	7000442981051215	untitled.exe	45d08a425b012b84

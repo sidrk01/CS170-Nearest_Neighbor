@@ -23,10 +23,10 @@ void SearchAlgos::backward_selection() {
     int removed_feature;
 
 ////prexisting accuracy without features (default rate)
-    cout << "Using all features, I get an accuracy of ";
-    ac = accuracy(data_set);
-    cout << setprecision(4)<< ac << "%\n\n";
-    cout << "Beginning search.\n\n";
+//    cout << "Using all features, I get an accuracy of ";
+//    ac = accuracy(data_set);
+//    cout << setprecision(4)<< ac << "%\n\n";
+//    cout << "Beginning search.\n\n";
 
     data_temp.push_back(data_set.at(0)); //add first set of values
 
